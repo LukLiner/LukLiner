@@ -8,6 +8,8 @@ uvicorn = {extras = ["standart"], version = "^0.34.2"}
 pydantic = {extras = ["email"], version = "^2.11.4"}
 pydantic-settings = "^2.9.1"
 sqlalchemy = {extras = ["asyncio"], version = "^2.0.41"}
+mysqlclient = "^2.2.7"
+pymysql = "^1.1.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
