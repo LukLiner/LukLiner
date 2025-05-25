@@ -24,7 +24,7 @@ class DataBaseHelper:
         self.session_factory = async_sessionmaker(
             bind=self.engine,
             autoflush=False,
-            autocomit =False,
+            autocommit =False,
             expire_on_commit=False,
         )
     async def dispose(self) -> None:

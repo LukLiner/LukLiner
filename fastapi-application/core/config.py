@@ -5,12 +5,18 @@ class RunConfig(BaseModel):
     host:str = "127.0.0.1"
     port: str = 8000
 
+class ApiV1Prefix(BaseModel):
+    api: str = "/v1"
+    users: str = "/users"
+
 class ApiPrefix(BaseModel):
     api_prefix: str = "/api"
+    v1:ApiV1Prefix = ApiV1Prefix()
+
 
 class DataBaseSettings(BaseModel):
     url:str
-    echo: bool = True
+    echo: bool = False
     echo_pool: bool = False
     pool_size: int = 50
     max_overflow: int = 10
