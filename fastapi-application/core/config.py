@@ -10,7 +10,7 @@ class ApiPrefix(BaseModel):
 
 class DataBaseSettings(BaseModel):
     url:str
-    echo: bool = False
+    echo: bool = True
     echo_pool: bool = False
     pool_size: int = 50
     max_overflow: int = 10
@@ -25,7 +25,7 @@ class Settings(BaseSettings):
     )
     run: RunConfig = RunConfig()
     prefix: ApiPrefix = ApiPrefix()
-    db: DataBaseSettings = DataBaseSettings(url="mysql+asyncmy://bestuser:bestuser@127.0.0.1:3306/shop", echo=True)
+    db: DataBaseSettings = DataBaseSettings(url="mysql+asyncmy://bestuser:bestuser@127.0.0.1:3306/shop")
 
 
 settings = Settings()
