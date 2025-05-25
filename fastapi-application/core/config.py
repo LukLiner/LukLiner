@@ -1,5 +1,5 @@
-from pydantic import BaseModel, MySQLDsn
-from pydantic_settings import BaseSettings
+from pydantic import BaseModel, MySQLDsn, PostgresDsn
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class RunConfig(BaseModel):
     host:str = "127.0.0.1"
@@ -9,7 +9,7 @@ class ApiPrefix(BaseModel):
     api_prefix: str = "/api"
 
 class DataBaseSettings(BaseModel):
-    url:MySQLDsn
+    url:str
     echo: bool = False
     echo_pool: bool = False
     pool_size: int = 50
@@ -17,9 +17,15 @@ class DataBaseSettings(BaseModel):
 
 
 class Settings(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_nested_delimiter="__",
+        case_sensitive=False,
+        env_prefix="APP_CONFIG_",
+    )
     run: RunConfig = RunConfig()
     prefix: ApiPrefix = ApiPrefix()
-    db: DataBaseSettings = DataBaseSettings
+    db: DataBaseSettings = DataBaseSettings(url="mysql+asyncmy://bestuser:bestuser@127.0.0.1:3306/shop", echo=True)
 
 
 settings = Settings()

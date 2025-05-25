@@ -10,6 +10,7 @@ pydantic-settings = "^2.9.1"
 sqlalchemy = {extras = ["asyncio"], version = "^2.0.41"}
 mysqlclient = "^2.2.7"
 pymysql = "^1.1.1"
+asyncmy = "^0.2.10"
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
